@@ -3,20 +3,34 @@ import base64
 import re
 import threading
 from datetime import datetime, timedelta
-from flask import Flask, request, jsonify, abort, render_template_string
+from flask import Flask, request, jsonify, abort, render_template_stringc render_template
 from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext
 from telegram import Update, ReplyKeyboardMarkup
 import uuid
 from dotenv import load_dotenv
 
-# --- load env ---
-load_dotenv()  # charge .env si présent
-
+bot = Bot(token=os.getenv("BOT_TOKEN"))
+chat_id = os.getenv("CHAT_ID")
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 CHAT_ID = os.getenv('CHAT_ID')
 SERVER_URL = os.getenv('SERVER_URL')  # ex: https://tonapp.onrender.com
 PORT = int(os.environ.get('PORT', 8080))
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/upload", methods=["POST"])
+def upload():
+    photo = request.files["photo"]
+    photo.save("static/photo.jpg")
+    bot.send_photo(chat_id=chat_id, photo=open("static/photo.jpg", "rb"))
+    return "OK"
+# --- load env ---
+
 
 if not BOT_TOKEN or not CHAT_ID:
     raise RuntimeError("Il faut définir BOT_TOKEN et CHAT_ID dans l'environnement (.env ou via dashboard).")
