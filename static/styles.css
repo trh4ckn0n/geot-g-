@@ -1,0 +1,44 @@
+body {
+  background-color: #0a0a0a;
+  color: #00ff9f;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-shadow: 0 0 5px #00ff9f, 0 0 10px #00ff9f;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #00ff9f;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #0ff;
+}
+
+video {
+  width: 320px;
+  height: 240px;
+  border: 3px solid #00ff9f;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00ff9f;
+  margin-bottom: 1rem;
+}
+
+.status {
+  font-size: 1rem;
+  color: #ff0055;
+  text-shadow: 0 0 5px #ff0055;
+}
