@@ -41,9 +41,6 @@ try:
 except ValueError:
     pass  # peut être un string avec -100...
 
-# --- init ---
-app = Flask(__name__)
-bot = Bot(token=BOT_TOKEN)
 
 CAPTURE_DIR = 'captures'
 os.makedirs(CAPTURE_DIR, exist_ok=True)
