@@ -3,7 +3,7 @@ import base64
 import re
 import threading
 from datetime import datetime, timedelta
-from flask import Flask, request, jsonify, abort, render_template_stringc render_template
+from flask import Flask, request, jsonify, abort, render_template_string, render_template
 from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext
 from telegram import Update, ReplyKeyboardMarkup
